@@ -18,9 +18,14 @@ function App() {
             date: new Date(1988, 6, 21)
         }];
 
+    const saveNewExpense = (newExpense) => {
+        console.log("From app.js");
+        console.log(newExpense);
+    }
+
     return (
         <div>
-            <NewExpense/>
+            <NewExpense onNewExpense={saveNewExpense}/>
             <Expense
                 items={data}>
             </Expense>
