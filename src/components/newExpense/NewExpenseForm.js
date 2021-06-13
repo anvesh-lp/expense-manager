@@ -18,9 +18,10 @@ function NewExpenseForm(props) {
 
     const handleSubmit = (event) => {
         event.preventDefault();
+        props.setEditingMode(false);
         const expense = {
             title: entertitle,
-            amount: enteredAmount,
+            amount: +enteredAmount,
             date: new Date(entereddate)
         }
         props.onNewExpenseHandler(expense);
@@ -28,6 +29,9 @@ function NewExpenseForm(props) {
         setTitle('');
         setAmount('');
         setDate('');
+    }
+    const editHanfler = () => {
+        props.setEditingMode();
     }
     return (
         <form onSubmit={handleSubmit}>
@@ -42,9 +46,11 @@ function NewExpenseForm(props) {
                 </div>
                 <div className="new-expense__control">
                     <label>Date</label>
-                    <input onChange={datehandler} type='date' value={entereddate} min="2019-01-01" max="2020-01-01"/>
+                    <input onChange={datehandler} type='date' value={entereddate} min="2019-01-01" max="2022-01-01"/>
                 </div>
                 <div className="new-expense__actions">
+                    {/*Close the ne form window when clicked on cancel  */}
+                    <button onClick={editHanfler}> Cancel</button>
                     <button type="submit">Add Expense</button>
                 </div>
             </div>

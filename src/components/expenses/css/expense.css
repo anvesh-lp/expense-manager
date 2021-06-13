@@ -5,3 +5,8 @@
     width: 50rem;
     max-width: 95%;
 }
+
+.showErrors {
+    color: #ea5757;
+    text-align: center
+}
